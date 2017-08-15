@@ -1,4 +1,5 @@
 import javafx.application.Application
+import javafx.event.EventHandler
 import javafx.geometry.Insets
 import javafx.geometry.Pos
 import javafx.scene.Scene
@@ -8,6 +9,8 @@ import javafx.scene.image.ImageView
 import javafx.scene.layout.*
 import javafx.stage.Stage
 import javafx.scene.paint.Color
+import javafx.scene.input.KeyCode
+import javafx.scene.input.KeyEvent
 
 
 class GUI: Application() {
@@ -27,13 +30,14 @@ class GUI: Application() {
         hBox.children.add(Label("Ornithology"))
         borderPane.top = hBox
         val scene = Scene(borderPane, 400.0, 400.0)
+        scene.addEventFilter(KeyEvent.KEY_PRESSED) { ke ->
+            if (ke.code == KeyCode.ESCAPE) {
+                println("Key Pressed: " + ke.code)
+                ke.consume() // <-- stops passing the event to next node
+            }
+        };
         stage.scene = scene
-        for (i in 0..5) {
-            print(i)
-        }
         stage.show()
-        val mute = mutableMapOf<Int, Int>()
-        val zahl : Int = mute[6] as Int
     }
 }
 
