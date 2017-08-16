@@ -17,7 +17,7 @@ class GameVC(val stage: Stage, val difficulty: Int) {
     init {
         GameView.answerBtns.forEach { it.setOnAction(WeiterButtonEventHandler()) }
         setAnswers(qCnt)
-        setImage(qCnt++)
+        setImage(qCnt)
     }
 
     inner class WeiterButtonEventHandler: EventHandler<ActionEvent> {
@@ -34,8 +34,8 @@ class GameVC(val stage: Stage, val difficulty: Int) {
                 else {
                     GameView.showCorrectness(false)
                 }
-                setAnswers(qCnt)
-                setImage(qCnt++)
+                setAnswers(++qCnt)
+                setImage(qCnt)
             }
         }
     }
