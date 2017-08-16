@@ -5,9 +5,10 @@ import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import javafx.stage.Stage
 
-class ResultVC(val stage: Stage) {
+class ResultVC(val stage: Stage, points: Int) {
 
     init {
+        ResultView.pointsLbl.text = "Sie haben $points Punkte erreicht"
         ResultView.onceAgainBtn.setOnAction(OnceAgainBtnEventHandler())
         ResultView.terminateBtn.setOnAction(TerminateBtnEventHandler())
     }

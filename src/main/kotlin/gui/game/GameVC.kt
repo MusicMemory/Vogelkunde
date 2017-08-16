@@ -11,25 +11,32 @@ import javafx.stage.Stage
 
 class GameVC(val stage: Stage, val difficulty: Int) {
 
-    val game = Game(BirdRepository.noBirds(), Config.noQuestion , Config.noAnswers, difficulty);
-    var counter = 0
+    val game = Game(BirdRepository.noBirds(), Config.noQuestions, Config.noAnswers, difficulty);
+    var qCnt = 0
 
     init {
-        GameView.answer1Btn.setOnAction(WeiterButtonEventHandler())
-        GameView.setImage(chooseImage(counter++))
+        GameView.answerBtns.forEach { it.setOnAction(WeiterButtonEventHandler()) }
+        GameView.setImage(chooseImage(qCnt++))
     }
 
     inner class WeiterButtonEventHandler: EventHandler<ActionEvent> {
         override fun handle(event: ActionEvent) {
-            if (counter >= Config.noQuestion) {
-                ResultVC(stage).show()
+            if (qCnt >= Config.noQuestions) {
+                ResultVC(stage, game.points).show()
             }
             else {
-                GameView.setImage(chooseImage(counter++))
+                val bntIdx = GameView.answerBtns.indexOf(event.source)
+                if (game.isCorrect(qCnt, bntIdx)) {
+                    game.addPoints(difficulty)
+                }
+                GameView.setImage(chooseImage(qCnt++))
             }
         }
     }
 
+    /**
+     * Ermittelt das Bild zur q-ten Frage
+     */
     private fun chooseImage(q: Int): Image {
         val birdId = game.questions[q]
         val bird = BirdRepository.birdWithId(birdId)

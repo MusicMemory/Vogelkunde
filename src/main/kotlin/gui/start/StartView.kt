@@ -1,5 +1,6 @@
 package gui.start
 
+import domain.Config
 import javafx.scene.Scene
 import javafx.scene.control.Button
 import javafx.scene.layout.FlowPane
@@ -17,7 +18,7 @@ object StartView {
         pane.children.add(difficulty1Btn)
         pane.children.add(difficulty2Btn)
         pane.children.add(difficulty3Btn)
-        scene = Scene(pane, 400.0, 400.0)
+        scene = Scene(pane, Config.windowSize.first, Config.windowSize.second)
     }
 
     fun show(stage: Stage) {

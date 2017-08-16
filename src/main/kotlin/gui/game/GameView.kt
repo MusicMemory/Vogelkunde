@@ -1,5 +1,6 @@
 package gui.start
 
+import domain.Config
 import javafx.scene.Scene
 import javafx.scene.control.Button
 import javafx.scene.image.Image
@@ -12,21 +13,14 @@ import javafx.stage.Stage
 object GameView {
 
     var scene: Scene
-    val answer1Btn = Button("Antwort 1")
-    val answer2Btn = Button("Antwort 2")
-    val answer3Btn = Button("Antwort 3")
-    val answer4Btn = Button("Antwort 4")
-
+    val answerBtns = Array<Button>(Config.noAnswers) { i -> Button("Antwort ${i+1}") }
     var imageView = ImageView()
 
     init {
         val pane = FlowPane()
         pane.children.add(imageView)
-        pane.children.add(GameView.answer1Btn)
-        pane.children.add(GameView.answer2Btn)
-        pane.children.add(GameView.answer3Btn)
-        pane.children.add(GameView.answer4Btn)
-        scene = Scene(pane, 400.0, 400.0)
+        answerBtns.forEach { pane.children.add(it) }
+        scene = Scene(pane, Config.windowSize.first, Config.windowSize.second)
     }
 
     fun show(stage: Stage) {
