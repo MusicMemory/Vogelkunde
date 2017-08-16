@@ -4,9 +4,9 @@ import domain.BirdRepository
 import domain.Config
 import domain.Game
 import domain.ImageRepository
+import javafx.concurrent.Task
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
-import javafx.scene.image.Image
 import javafx.stage.Stage
 
 class GameVC(val stage: Stage, val difficulty: Int) {
@@ -16,7 +16,8 @@ class GameVC(val stage: Stage, val difficulty: Int) {
 
     init {
         GameView.answerBtns.forEach { it.setOnAction(WeiterButtonEventHandler()) }
-        GameView.setImage(chooseImage(qCnt++))
+        setAnswers(qCnt)
+        setImage(qCnt++)
     }
 
     inner class WeiterButtonEventHandler: EventHandler<ActionEvent> {
@@ -28,20 +29,38 @@ class GameVC(val stage: Stage, val difficulty: Int) {
                 val bntIdx = GameView.answerBtns.indexOf(event.source)
                 if (game.isCorrect(qCnt, bntIdx)) {
                     game.addPoints(difficulty)
+                    GameView.showCorrectness(true)
                 }
-                GameView.setImage(chooseImage(qCnt++))
+                else {
+                    GameView.showCorrectness(false)
+                }
+                setAnswers(qCnt)
+                setImage(qCnt++)
             }
         }
     }
 
     /**
-     * Ermittelt das Bild zur q-ten Frage
+     * Setzt das Bild zur q-ten Frage in die Image-View
      */
-    private fun chooseImage(q: Int): Image {
+    private fun setImage(q: Int) {
         val birdId = game.questions[q]
         val bird = BirdRepository.birdWithId(birdId)
-        return ImageRepository.imageWithFileName(bird.filename)
+        val image = ImageRepository.imageWithFileName(bird.filename)
+        GameView.setImage(image)
     }
+
+    /**
+     * Setzt die Antwort-Möglichkeiten zur q-ten Frage in die Antwort-Buttons
+     */
+    private fun setAnswers(q: Int) {
+        for (a in 0..GameView.answerBtns.size - 1) {
+            val birdId = game.answers[q][a]
+            val bird = BirdRepository.birdWithId(birdId)
+            GameView.answerBtns[a].text = bird.name
+        }
+    }
+
 
     fun show() {
         GameView.show(stage)

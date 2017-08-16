@@ -1,8 +1,10 @@
 package gui.start
 
 import domain.Config
+import javafx.concurrent.Task
 import javafx.scene.Scene
 import javafx.scene.control.Button
+import javafx.scene.control.Label
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.layout.FlowPane
@@ -15,11 +17,13 @@ object GameView {
     var scene: Scene
     val answerBtns = Array<Button>(Config.noAnswers) { i -> Button("Antwort ${i+1}") }
     var imageView = ImageView()
+    val trueFalseLbl = Label("Richtig / Falsch")
 
     init {
         val pane = FlowPane()
         pane.children.add(imageView)
-        answerBtns.forEach { pane.children.add(it) }
+        pane.children.addAll(answerBtns)
+        pane.children.add(trueFalseLbl);
         scene = Scene(pane, Config.windowSize.first, Config.windowSize.second)
     }
 
@@ -27,6 +31,20 @@ object GameView {
         stage.title = "Ornithology - Beantworte die Frage..."
         stage.scene = scene
         stage.show()
+    }
+
+    fun showCorrectness(correct: Boolean) {
+        GameView.trueFalseLbl.text = if (correct) "Richtig" else "Falsch"
+        val sleeper = object: Task<Void>() {
+            override fun call(): Void? {
+                Thread.sleep(500)
+                return null
+            }
+        }
+        sleeper.setOnSucceeded {
+            GameView.trueFalseLbl.text = ""
+        }
+        Thread(sleeper).start();
     }
 
     fun setImage(image: Image) {
