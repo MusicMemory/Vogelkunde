@@ -30,8 +30,8 @@ object BirdRepository {
         birds[id] = bird
     }
 
-    fun findBirdById(id: Int): Bird {
-        return birds[id] ?: throw Exception("No bird with number $id available")
+    fun birdWithId(id: Int): Bird {
+        return birds[id]
     }
 
     fun noBirds(): Int {

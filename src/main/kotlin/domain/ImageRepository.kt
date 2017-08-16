@@ -4,8 +4,8 @@ import javafx.scene.image.Image
 
 object ImageRepository {
 
-    fun getImageByFileName(fileName: String): Image? {
-        return Image(fileName)
+    fun imageWithFileName(fileName: String): Image {
+        return Image("/images/" + fileName)
     }
 
 }
