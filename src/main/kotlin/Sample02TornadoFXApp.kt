@@ -44,7 +44,7 @@ fun main(args: Array<String>) {
     println(numList.any { it % 2 == 0})
     println(numList.all { it % 2 == 0})
 
-    var mutableList = mutableListOf(1,2,4,7,2,2,2)
+    val mutableList = mutableListOf(1,2,4,7,2,2,2)
     mutableList.add(3)
     mutableList[2] = 12
     do while (mutableList.remove(2))

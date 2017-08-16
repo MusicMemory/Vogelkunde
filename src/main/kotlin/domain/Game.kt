@@ -3,9 +3,9 @@ package domain
 class Game(noBirds: Int, noQuestions: Int, noAnswers: Int, difficulty: Int) {
 
     val MAX_ITERATIONS = 100;
+    val questions = IntArray(noQuestions)
+    val answers = Array<IntArray>(noQuestions, {t -> IntArray(0)})
     var points = 0
-    var questions = IntArray(noQuestions)
-    var answers = Array<IntArray>(noQuestions, {t -> IntArray(0)})
 
     init {
         for (q in 0..noQuestions-1) {
@@ -25,7 +25,7 @@ class Game(noBirds: Int, noQuestions: Int, noAnswers: Int, difficulty: Int) {
             }
 
             // Liste answers mit Zahlen (ID) füllen ohne Wiederholung ohne gleichen Namen
-            var answerList = mutableListOf<Int>()
+            val answerList = mutableListOf<Int>()
             counter = 0
             while (answerList.size < noAnswers && counter++ < MAX_ITERATIONS) {
                 val birdIdCandidate = randInt(noBirds)

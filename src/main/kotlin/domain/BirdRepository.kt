@@ -7,7 +7,7 @@ import java.io.Reader
 
 object BirdRepository {
 
-    var birds = mutableListOf<Bird>()
+    val birds = mutableListOf<Bird>()
 
     init {
         // lesen aus der CSV-Datei
