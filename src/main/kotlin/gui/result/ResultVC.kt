@@ -25,7 +25,6 @@ class ResultVC(val stage: Stage, points: Int) {
         }
     }
 
-
     fun show() {
         ResultView.show(stage)
     }
