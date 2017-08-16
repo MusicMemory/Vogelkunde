@@ -4,7 +4,6 @@ import domain.BirdRepository
 import domain.Config
 import domain.Game
 import domain.ImageRepository
-import javafx.concurrent.Task
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import javafx.stage.Stage
@@ -15,26 +14,25 @@ class GameVC(val stage: Stage, val difficulty: Int) {
     var qCnt = 0
 
     init {
-        GameView.answerBtns.forEach { it.setOnAction(WeiterButtonEventHandler()) }
+        GameView.answerBtns.forEach { it.setOnAction(AnswerButtonEventHandler()) }
         setAnswers(qCnt)
         setImage(qCnt)
     }
 
-    inner class WeiterButtonEventHandler: EventHandler<ActionEvent> {
+    inner class AnswerButtonEventHandler : EventHandler<ActionEvent> {
         override fun handle(event: ActionEvent) {
-            if (qCnt >= Config.noQuestions) {
+            require(qCnt < Config.noQuestions) { "qCnt must be less than $Config.noQuestions" }
+            val bntIdx = GameView.answerBtns.indexOf(event.source)
+
+            val isCcorrect = game.isCorrect(qCnt, bntIdx);
+            if (isCcorrect) game.addPoints(difficulty)
+            GameView.showCorrectness(isCcorrect)
+
+            if (++qCnt >= Config.noQuestions) {
                 ResultVC(stage, game.points).show()
             }
             else {
-                val bntIdx = GameView.answerBtns.indexOf(event.source)
-                if (game.isCorrect(qCnt, bntIdx)) {
-                    game.addPoints(difficulty)
-                    GameView.showCorrectness(true)
-                }
-                else {
-                    GameView.showCorrectness(false)
-                }
-                setAnswers(++qCnt)
+                setAnswers(qCnt)
                 setImage(qCnt)
             }
         }
