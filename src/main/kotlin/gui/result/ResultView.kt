@@ -10,7 +10,7 @@ import javafx.stage.Stage
 
 object ResultView {
 
-    var scene: Scene
+    val scene: Scene
     val pointsLbl = Label()
     val onceAgainBtn = Button("Noch einmal spielen")
     val terminateBtn = Button("Beenden")

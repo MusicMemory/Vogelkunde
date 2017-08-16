@@ -12,9 +12,9 @@ import javafx.stage.Stage
 
 object GameView {
 
-    var scene: Scene
+    val scene: Scene
     val answerBtns = Array<Button>(Config.noAnswers) { i -> Button("Antwort ${i+1}") }
-    var imageView = ImageView()
+    val imageView = ImageView()
     val correctnessLbl = Label()
 
     init {

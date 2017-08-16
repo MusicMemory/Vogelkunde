@@ -8,7 +8,7 @@ import javafx.stage.Stage
 
 object StartView {
 
-    var scene: Scene
+    val scene: Scene
     val difficulty1Btn = Button("Schwierigkeit 1")
     val difficulty2Btn = Button("Schwierigkeit 2")
     val difficulty3Btn = Button("Schwierigkeit 3")
