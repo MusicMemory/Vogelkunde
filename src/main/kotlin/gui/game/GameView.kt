@@ -8,8 +8,6 @@ import javafx.scene.control.Label
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.layout.FlowPane
-import javafx.scene.layout.GridPane
-import javafx.scene.layout.StackPane
 import javafx.stage.Stage
 
 object GameView {
@@ -17,13 +15,13 @@ object GameView {
     var scene: Scene
     val answerBtns = Array<Button>(Config.noAnswers) { i -> Button("Antwort ${i+1}") }
     var imageView = ImageView()
-    val trueFalseLbl = Label("Richtig / Falsch")
+    val correctnessLbl = Label()
 
     init {
         val pane = FlowPane()
         pane.children.add(imageView)
         pane.children.addAll(answerBtns)
-        pane.children.add(trueFalseLbl);
+        pane.children.add(correctnessLbl);
         scene = Scene(pane, Config.windowSize.first, Config.windowSize.second)
     }
 
@@ -34,7 +32,7 @@ object GameView {
     }
 
     fun showCorrectness(correct: Boolean) {
-        GameView.trueFalseLbl.text = if (correct) "Richtig" else "Falsch"
+        GameView.correctnessLbl.text = if (correct) "Richtig" else "Falsch"
         val sleeper = object: Task<Void>() {
             override fun call(): Void? {
                 Thread.sleep(500)
@@ -42,7 +40,7 @@ object GameView {
             }
         }
         sleeper.setOnSucceeded {
-            GameView.trueFalseLbl.text = ""
+            GameView.correctnessLbl.text = ""
         }
         Thread(sleeper).start();
     }
