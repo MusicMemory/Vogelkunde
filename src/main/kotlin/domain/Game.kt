@@ -12,7 +12,7 @@ class Game(noBirds: Int, noQuestions: Int, noAnswers: Int, difficulty: Int) {
             var counter = 0;
             while (counter++ < MAX_ITERATIONS) {
                 val birdIdCandidate = randInt(noBirds)
-                val birdCandidate = BirdRepository.findBirdById(birdIdCandidate)
+                val birdCandidate = BirdRepository.birdWithId(birdIdCandidate)
                 // Alle Vögel sollen die Schwierigkeit difficulty haben
                 if (!(birdIdCandidate in questions) && birdCandidate.difficulty == difficulty) {
                     questions[q] = birdIdCandidate
@@ -26,19 +26,23 @@ class Game(noBirds: Int, noQuestions: Int, noAnswers: Int, difficulty: Int) {
 
             // Liste answers mit Zahlen (ID) füllen ohne Wiederholung ohne gleichen Namen
             var answerList = mutableListOf<Int>()
-            while (answerList.size < noAnswers) {
+            counter = 0
+            while (answerList.size < noAnswers && counter++ < MAX_ITERATIONS) {
                 val birdIdCandidate = randInt(noBirds)
                 // Der zu ratende Vogel soll erst mal nicht in den möglichen Antwortkandidaten vorkommen:
                 // Später wird dann einer durch die richtige Antwort ersetzt
-                val birdNameCandidate = BirdRepository.findBirdById(birdIdCandidate).name
-                val birdNameQuestion = BirdRepository.findBirdById(questions[q]).name
+                val birdNameCandidate = BirdRepository.birdWithId(birdIdCandidate).name
+                val birdNameQuestion = BirdRepository.birdWithId(questions[q]).name
                 if (birdNameCandidate.equals(birdNameQuestion)) continue
 
                 val isCandidateDuplicate = answerList.any { a ->
-                    val birdNameAnswer = BirdRepository.findBirdById(a).name
+                    val birdNameAnswer = BirdRepository.birdWithId(a).name
                     birdNameCandidate.equals(birdNameAnswer)
                 }
                 if (!isCandidateDuplicate) answerList.add(birdIdCandidate)
+            }
+            if (counter >= MAX_ITERATIONS) {
+                throw Exception("Probably there are not enough birds present: " + noBirds)
             }
             // richtige Antwort zufällig unter den bisherigen Antworten platzieren (überschreiben)
             val posRightAnswer = randInt(noAnswers)
