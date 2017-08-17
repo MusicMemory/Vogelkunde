@@ -1,14 +1,14 @@
 package gui.start
 
+import domain.PlayerData
+import gui.game.GameVC
 import javafx.application.Platform
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
-import javafx.event.EventType
 import javafx.scene.input.KeyCode
 import javafx.scene.input.KeyEvent
-import javafx.stage.Stage
 
-class StartVC(val stage: Stage) {
+object StartVC {
 
     init {
         StartView.difficulty1Btn.setOnAction(DifficultyBtnEventHandler())
@@ -17,22 +17,22 @@ class StartVC(val stage: Stage) {
         StartView.scene.addEventFilter(KeyEvent.KEY_PRESSED, DifficultyKeyEventHandler())
     }
 
-    inner class DifficultyBtnEventHandler : EventHandler<ActionEvent> {
+    class DifficultyBtnEventHandler : EventHandler<ActionEvent> {
         override fun handle(event: ActionEvent) {
-            val difficulty =
+            PlayerData.difficulty =
                     when (event.source) {
                         StartView.difficulty1Btn -> 1
                         StartView.difficulty2Btn -> 2
                         StartView.difficulty3Btn -> 3
                         else -> return
                     }
-            GameVC(stage, difficulty).show()
+            GameVC.show()
         }
     }
 
-    inner class DifficultyKeyEventHandler : EventHandler<KeyEvent> {
+    class DifficultyKeyEventHandler : EventHandler<KeyEvent> {
         override fun handle(event: KeyEvent) {
-            val difficulty =
+            PlayerData.difficulty =
                     when (event.code) {
                         KeyCode.DIGIT1 -> 1
                         KeyCode.DIGIT2 -> 2
@@ -43,11 +43,12 @@ class StartVC(val stage: Stage) {
                         }
                         else -> return
                     }
-            GameVC(stage, difficulty).show()
+            GameVC.show()
         }
     }
 
     fun show() {
-        StartView.show(stage)
+        PlayerData.points = 0
+        StartView.show()
     }
 }

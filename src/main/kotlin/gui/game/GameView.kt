@@ -12,6 +12,7 @@ import javafx.stage.Stage
 
 object GameView {
 
+    lateinit var stage: Stage
     val scene: Scene
     val answerBtns = Array<Button>(Config.noAnswers) { i -> Button("Antwort ${i+1}") }
     val imageView = ImageView()
@@ -25,7 +26,7 @@ object GameView {
         scene = Scene(pane, Config.windowSize.first, Config.windowSize.second)
     }
 
-    fun show(stage: Stage) {
+    fun show() {
         stage.title = "Ornithology - Beantworte die Frage..."
         stage.scene = scene
         stage.show()

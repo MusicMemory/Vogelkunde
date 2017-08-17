@@ -5,7 +5,6 @@ class Game(noBirds: Int, noQuestions: Int, noAnswers: Int, difficulty: Int) {
     val MAX_ITERATIONS = 100;
     val questions = IntArray(noQuestions)
     val answers = Array<IntArray>(noQuestions, {t -> IntArray(0)})
-    var points = 0
 
     init {
         for (q in 0..noQuestions-1) {
@@ -70,10 +69,6 @@ class Game(noBirds: Int, noQuestions: Int, noAnswers: Int, difficulty: Int) {
         return correct
     }
 
-    open fun addPoints(points: Int) {
-        this.points += points
-        println("Points: $points")
-    }
 }
 
 fun main(args: Array<String>) {

@@ -1,17 +1,16 @@
-package gui.start
+package gui.game
 
-import domain.BirdRepository
-import domain.Config
-import domain.Game
-import domain.ImageRepository
+import domain.*
+import gui.result.ResultVC
+import gui.start.GameView
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import javafx.scene.input.KeyCode
 import javafx.scene.input.KeyEvent
-import javafx.stage.Stage
 
-class GameVC(val stage: Stage, val difficulty: Int) {
+object GameVC {
 
+    val difficulty = 1
     val game = Game(BirdRepository.noBirds(), Config.noQuestions, Config.noAnswers, difficulty);
     var q = 0
 
@@ -22,14 +21,14 @@ class GameVC(val stage: Stage, val difficulty: Int) {
         setImage(q)
     }
 
-    inner class AnswerButtonEventHandler : EventHandler<ActionEvent> {
+    class AnswerButtonEventHandler : EventHandler<ActionEvent> {
         override fun handle(event: ActionEvent) {
             val bntIdx = GameView.answerBtns.indexOf(event.source)
             handleAnswer(bntIdx)
         }
     }
 
-    inner class AnswerKeyEventHandler : EventHandler<KeyEvent> {
+    class AnswerKeyEventHandler : EventHandler<KeyEvent> {
         override fun handle(event: KeyEvent) {
             handleAnswer(when (event.code) {
                 KeyCode.DIGIT1 -> 0
@@ -50,16 +49,17 @@ class GameVC(val stage: Stage, val difficulty: Int) {
      * Behandelt eine Antwort mit dem Wert <code>a</code>
      */
     private fun handleAnswer(a: Int) {
+        println(this)
         require(q < Config.noQuestions) { "q=$q must be less than ${Config.noQuestions}" }
         if (a >= Config.noAnswers) return
 
         val isCcorrect = game.isCorrect(q, a);
-        if (isCcorrect) game.addPoints(difficulty)
+        if (isCcorrect) PlayerData.addPoints()
         GameView.showCorrectness(isCcorrect)
 
         if (++q >= Config.noQuestions) {
             q = 0; // Wichtig, aber schaebbig
-            ResultVC(stage, game.points).show()
+            ResultVC.show()
         }
         else {
             setAnswerTexts(q)
@@ -90,7 +90,7 @@ class GameVC(val stage: Stage, val difficulty: Int) {
 
 
     fun show() {
-        GameView.show(stage)
+        GameView.show()
     }
 
 }

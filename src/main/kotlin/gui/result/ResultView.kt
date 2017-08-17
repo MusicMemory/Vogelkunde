@@ -10,6 +10,7 @@ import javafx.stage.Stage
 
 object ResultView {
 
+    lateinit var stage: Stage
     val scene: Scene
     val pointsLbl = Label()
     val onceAgainBtn = Button("Noch einmal spielen")
@@ -23,7 +24,7 @@ object ResultView {
         scene = Scene(pane, Config.windowSize.first, Config.windowSize.second)
     }
 
-    fun show(stage: Stage) {
+    fun show() {
         stage.title = "Ornithology - Ergebnis"
         stage.scene = scene
         stage.show()
