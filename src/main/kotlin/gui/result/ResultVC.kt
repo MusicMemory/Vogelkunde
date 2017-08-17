@@ -12,7 +12,6 @@ import javafx.scene.input.KeyEvent
 object ResultVC {
 
     init {
-        ResultView.pointsLbl.text = "Sie haben ${PlayerData.points} Punkte erreicht"
         ResultView.onceAgainBtn.setOnAction(OnceAgainBtnEventHandler())
         ResultView.terminateBtn.setOnAction(TerminateBtnEventHandler())
         ResultView.scene.addEventFilter(KeyEvent.KEY_PRESSED, KeyEventHandler())
@@ -42,6 +41,7 @@ object ResultVC {
     }
 
     fun show() {
+        ResultView.pointsLbl.text = "Sie haben ${PlayerData.points} Punkte erreicht"
         ResultView.show()
     }
 

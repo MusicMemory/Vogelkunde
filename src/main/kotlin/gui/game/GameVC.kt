@@ -58,7 +58,6 @@ object GameVC {
         GameView.showCorrectness(isCcorrect)
 
         if (++q >= Config.noQuestions) {
-            q = 0; // Wichtig, aber schaebbig
             ResultVC.show()
         }
         else {
@@ -90,6 +89,7 @@ object GameVC {
 
 
     fun show() {
+        q = 0;
         GameView.show()
     }
 
