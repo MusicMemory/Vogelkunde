@@ -10,8 +10,7 @@ import javafx.scene.input.KeyEvent
 
 object GameVC {
 
-    val difficulty = 1
-    val game = Game(BirdRepository.noBirds(), Config.noQuestions, Config.noAnswers, difficulty);
+    val game = Game(BirdRepository.noBirds(), Config.noQuestions, Config.noAnswers, PlayerData.difficulty);
     var q = 0
 
     init {
