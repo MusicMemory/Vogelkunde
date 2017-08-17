@@ -19,20 +19,20 @@ object StartVC {
 
     class DifficultyBtnEventHandler : EventHandler<ActionEvent> {
         override fun handle(event: ActionEvent) {
-            PlayerData.difficulty =
+            PlayerData.assignDifficulty(
                     when (event.source) {
                         StartView.difficulty1Btn -> 1
                         StartView.difficulty2Btn -> 2
                         StartView.difficulty3Btn -> 3
                         else -> return
-                    }
+                    })
             GameVC.show()
         }
     }
 
     class DifficultyKeyEventHandler : EventHandler<KeyEvent> {
         override fun handle(event: KeyEvent) {
-            PlayerData.difficulty =
+            PlayerData.assignDifficulty(
                     when (event.code) {
                         KeyCode.DIGIT1 -> 1
                         KeyCode.DIGIT2 -> 2
@@ -42,7 +42,7 @@ object StartVC {
                             return
                         }
                         else -> return
-                    }
+                    })
             GameVC.show()
         }
     }

@@ -49,7 +49,6 @@ object GameVC {
      * Behandelt eine Antwort mit dem Wert <code>a</code>
      */
     private fun handleAnswer(a: Int) {
-        println(this)
         require(q < Config.noQuestions) { "q=$q must be less than ${Config.noQuestions}" }
         if (a >= Config.noAnswers) return
 
@@ -86,7 +85,6 @@ object GameVC {
             GameView.answerBtns[a].text = bird.name
         }
     }
-
 
     fun show() {
         q = 0;
