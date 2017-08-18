@@ -8,6 +8,7 @@ import javafx.stage.Stage
 class Main: Application() {
 
     override fun start(primaryStage: Stage) {
+        primaryStage.setResizable(false)
         StartView.stage  = primaryStage
         GameView.stage   = primaryStage
         ResultView.stage = primaryStage
