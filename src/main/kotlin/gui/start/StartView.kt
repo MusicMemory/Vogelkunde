@@ -16,7 +16,7 @@ object StartView {
     lateinit var stage: Stage
     val scene: Scene
     val headerLabel = Label("Ornithology")
-    val footerLabel = Label("2017, Entwickelt für die Schutzstation Hallig Hogge")
+    val footerLabel = Label("2017, entwickelt für die Schutzstation Wattenmeer Hogge")
     val difficulty1Button = Button("Geringe Schwierigkeit (1)")
     val difficulty2Button = Button("Mittlere Schwierigkeit (2)")
     val difficulty3Button = Button("Hohe Schwierigkeit (3)")
