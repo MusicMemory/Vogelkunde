@@ -1,0 +1,36 @@
+/* --------------------------------- *\
+ * start                             *
+\* --------------------------------- */
+.pane {
+    -fx-background-color: BLACK;
+
+}
+
+.header-label {
+    -fx-text-fill: WHITE;
+    -fx-font: 40px "Serif";
+    -fx-padding: 10px;
+    -fx-background-color: BLACK;
+    /*-fx-text-alignment: center;*/
+    /*-fx-alignment: center;*/
+}
+
+.difficulty-button {
+    -fx-font: 14px "Sans Serif";
+    -fx-padding: 10px;
+    -fx-pref-width: 250px;
+    -fx-background-color: #CCFF99;
+    -fx-border-insets: 5px;
+    -fx-background-insets: 5px;
+}
+
+
+/* --------------------------------- *\
+ * game                              *
+\* --------------------------------- */
+
+
+
+/* --------------------------------- *\
+ * result                            *
+\* --------------------------------- */
