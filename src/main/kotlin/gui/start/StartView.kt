@@ -25,14 +25,19 @@ object StartView {
     val borderPane = BorderPane()
 
     init {
-        headerLabel.styleClass.add("header-label");
+        scene = Scene(borderPane, Config.windowSize.first, Config.windowSize.second)
+        scene.getStylesheets().add("/common.css")
+        scene.getStylesheets().add("/start.css")
+
+        borderPane.styleClass.add("border-pane")
+        vBox.styleClass.add("vbox")
+        headerLabel.styleClass.add("header-label")
         footerLabel.styleClass.add("footer-label")
         difficulty1Button.styleClass.add("difficulty-button")
         difficulty2Button.styleClass.add("difficulty-button")
         difficulty3Button.styleClass.add("difficulty-button")
-        vBox.styleClass.add("vbox")
-        borderPane.styleClass.add("border-pane")
         imageView.styleClass.add("image-view")
+
         imageView.fitHeight = 250.0
         imageView.fitWidth = 250.0
 
@@ -42,10 +47,6 @@ object StartView {
         borderPane.bottom = footerLabel
         borderPane.center = vBox
         BorderPane.setAlignment(headerLabel, Pos.TOP_CENTER)
-
-        scene = Scene(borderPane, Config.windowSize.first, Config.windowSize.second)
-        scene.getStylesheets().add("/common.css")
-        scene.getStylesheets().add("/start.css")
     }
 
     fun show() {

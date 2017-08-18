@@ -59,6 +59,7 @@ object GameController {
             ResultController.show()
         }
         else {
+            GameView.stage.title = "Ornithology - Beantworte die ${q+1}. Frage..."
             setAnswerTexts(q)
             setImage(q)
         }
@@ -81,7 +82,7 @@ object GameController {
         for (a in 0..GameView.answerBtns.size - 1) {
             val birdId = game.answers[q][a]
             val bird = BirdRepository.birdWithId(birdId)
-            GameView.answerBtns[a].text = bird.name
+            GameView.answerBtns[a].text = bird.name// + " (${a+1})"
         }
     }
 

@@ -1,0 +1,38 @@
+/* --------------------------------- *\
+ * start                             *
+\* --------------------------------- */
+.border-pane {
+    -fx-background-color: BLACK;
+    -fx-padding: 10;
+    -fx-border-style: solid inside;
+    -fx-border-width: 2;
+    -fx-border-insets: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: #ffe895;
+}
+
+.vbox {
+    -fx-alignment: center;
+    -fx-spacing: 15;
+}
+
+.footer-label {
+    -fx-text-fill: GRAY;
+    -fx-font: 10px "Sans Serif";
+    -fx-padding: 0px;
+    -fx-background-color: BLACK;
+}
+
+.points-label {
+    -fx-text-fill: #dddddd;
+    -fx-font: 20px "Arial Black";
+    -fx-padding: 25px;
+    -fx-background-color: BLACK;
+}
+
+.term-button {
+    -fx-font: 14px "Sans Serif";
+    -fx-padding: 7px;
+    -fx-pref-width: 250px;
+    -fx-background-color: #ffe895;
+}

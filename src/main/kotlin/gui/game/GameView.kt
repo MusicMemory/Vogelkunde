@@ -28,20 +28,24 @@ object GameView {
     val gridPane = GridPane()
 
     init {
+        scene = Scene(borderPane, Config.windowSize.first, Config.windowSize.second)
+        scene.getStylesheets().add("/common.css")
+        scene.getStylesheets().add("/game.css")
+
+        borderPane.styleClass.add("border-pane")
+        gridPane.styleClass.add("grid-pane")
         answerBtns.forEach { it.styleClass.add("answer-button") }
         headerLabel.styleClass.add("header-label");
         footerLabel.styleClass.add("footer-label")
-        gridPane.styleClass.add("grid-pane")
         imageView.styleClass.add("image-view")
+
         imageView.fitWidth = 410.0
         imageView.isPreserveRatio = true
 
-        borderPane.styleClass.add("border-pane")
         borderPane.top = headerLabel;
         borderPane.bottom = footerLabel
 
         gridPane.add(imageView, 0, 0, 2, 1)
-
         for (i in 0..answerBtns.size-1) {
             gridPane.add(answerBtns[i], i%2, 1+i/2);
         }
@@ -51,14 +55,10 @@ object GameView {
         borderPane.center = gridPane
         BorderPane.setAlignment(headerLabel, Pos.TOP_CENTER)
         BorderPane.setAlignment(footerLabel, Pos.TOP_CENTER)
-
-        scene = Scene(borderPane, Config.windowSize.first, Config.windowSize.second)
-        scene.getStylesheets().add("/common.css")
-        scene.getStylesheets().add("/game.css")
     }
 
     fun show() {
-        stage.title = "Ornithology - Beantworte die Frage..."
+        stage.title = "Ornithology - Beantworte die 1. Frage..."
         stage.scene = scene
         stage.show()
     }

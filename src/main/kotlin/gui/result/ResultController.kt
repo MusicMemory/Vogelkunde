@@ -42,7 +42,13 @@ object ResultController {
     }
 
     fun show() {
-        ResultView.pointsLbl.text = "Sie haben ${PlayerData.points} Punkte erreicht"
+        val pointText = when (PlayerData.points) {
+            0 -> "keinen Punkt"
+            1 -> "einen Punkt"
+            else -> "${PlayerData.points} Punkte"
+        }
+
+        ResultView.pointsLabel.text = "Sie haben ${pointText} erreicht."
         ResultView.show()
     }
 
