@@ -59,11 +59,7 @@ class Game(noBirds: Int, noQuestions: Int, noAnswers: Int, difficulty: Int) {
         return (Math.random() * upperBound).toInt()
     }
 
-    open fun getQuestion(q: Int): Pair<Int, IntArray> {
-        return Pair(questions[q], answers[q])
-    }
-
-    open fun isCorrect(q: Int, a: Int): Boolean {
+    fun isCorrect(q: Int, a: Int): Boolean {
         val correct = questions[q] == answers[q][a]
         println("Answer: $a, correct: $correct")
         return correct

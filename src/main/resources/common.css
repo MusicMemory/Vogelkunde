@@ -1,0 +1,8 @@
+.header-label {
+    -fx-text-fill: #dddddd;
+    /*-fx-font-family: "Luminari";*/
+    -fx-font-family: "Marker Felt";
+    -fx-font-size: 50px;
+    -fx-padding: 10px;
+    -fx-background-color: BLACK;
+}

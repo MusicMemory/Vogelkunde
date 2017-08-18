@@ -1,0 +1,36 @@
+/* --------------------------------- *\
+ * start                             *
+\* --------------------------------- */
+.border-pane {
+    -fx-background-color: BLACK;
+    -fx-padding: 10;
+    -fx-border-style: solid inside;
+    -fx-border-width: 2;
+    -fx-border-insets: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: #ffe895;
+}
+
+.vbox {
+    -fx-alignment: center;
+    -fx-spacing: 15;
+}
+
+.image-view {
+    -fx-fit-to-height: 300;
+    -fx-fit-to-width: 300;
+}
+
+.footer-label {
+    -fx-text-fill: GRAY;
+    -fx-font: 10px "Sans Serif";
+    -fx-padding: 0px;
+    -fx-background-color: BLACK;
+}
+
+.difficulty-button {
+    -fx-font: 14px "Sans Serif";
+    -fx-padding: 7px;
+    -fx-pref-width: 250px;
+    -fx-background-color: #ffe895;
+}
