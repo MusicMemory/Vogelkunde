@@ -8,7 +8,7 @@
     -fx-border-width: 2;
     -fx-border-insets: 5;
     -fx-border-radius: 5;
-    -fx-border-color: #ffe895;
+    -fx-border-color: #b0eeff;
 }
 
 .vbox {
@@ -34,5 +34,5 @@
     -fx-font: 14px "Sans Serif";
     -fx-padding: 7px;
     -fx-pref-width: 250px;
-    -fx-background-color: #ffe895;
+    -fx-background-color: #b0eeff;
 }
