@@ -45,18 +45,11 @@ object GameView {
 
         val gridPane = GridPane()
         gridPane.add(imageView, 0, 0, 2, 1)
-        gridPane.add(answerBtns[0], 0, 1);
-        gridPane.add(answerBtns[1], 1, 1);
-        gridPane.add(answerBtns[2], 0, 2);
-        gridPane.add(answerBtns[3], 1, 2);
+
+        for (i in 0..answerBtns.size-1) {
+            gridPane.add(answerBtns[i], i%2, 1+i/2);
+        }
         gridPane.styleClass.add("grid-pane")
-
-//        val column1 = ColumnConstraints()
-//        column1.percentWidth = 50.0
-//        val column2 = ColumnConstraints()
-//        column2.percentWidth = 50.0
-//        gridPane.getColumnConstraints().addAll(column1, column2)
-
         gridPane.setHgap(10.0) //horizontal gap in pixels => that's what you are asking for
         gridPane.setVgap(10.0) //vertical gap in pixels
         gridPane.setPadding(Insets(10.0, 10.0, 10.0, 10.0))
