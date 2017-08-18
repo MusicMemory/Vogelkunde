@@ -38,7 +38,7 @@ object StartView {
         difficulty3Button.styleClass.add("difficulty-button")
         imageView.styleClass.add("image-view")
 
-        imageView.fitHeight = 250.0
+        imageView.fitHeight = 230.0
         imageView.fitWidth = 250.0
 
         vBox.children.addAll(imageView, difficulty1Button, difficulty2Button, difficulty3Button)
