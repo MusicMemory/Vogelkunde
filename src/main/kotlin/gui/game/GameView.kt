@@ -25,34 +25,28 @@ object GameView {
     val answerBtns = Array<Button>(Config.noAnswers) { i -> Button("Antwort ${i+1}") }
     val imageView = ImageView()
     val borderPane = BorderPane()
+    val gridPane = GridPane()
 
     init {
-        val pane = FlowPane()
-        pane.children.add(imageView)
-        pane.children.addAll(answerBtns)
-        pane.children.add(footerLabel);
         answerBtns.forEach { it.styleClass.add("answer-button") }
-
         headerLabel.styleClass.add("header-label");
         footerLabel.styleClass.add("footer-label")
+        gridPane.styleClass.add("grid-pane")
+        imageView.styleClass.add("image-view")
         imageView.fitWidth = 410.0
         imageView.isPreserveRatio = true
-        imageView.styleClass.add("image-view")
 
         borderPane.styleClass.add("border-pane")
         borderPane.top = headerLabel;
         borderPane.bottom = footerLabel
 
-        val gridPane = GridPane()
         gridPane.add(imageView, 0, 0, 2, 1)
 
         for (i in 0..answerBtns.size-1) {
             gridPane.add(answerBtns[i], i%2, 1+i/2);
         }
-        gridPane.styleClass.add("grid-pane")
-        gridPane.setHgap(10.0) //horizontal gap in pixels => that's what you are asking for
-        gridPane.setVgap(10.0) //vertical gap in pixels
-        gridPane.setPadding(Insets(10.0, 10.0, 10.0, 10.0))
+        gridPane.setHgap(10.0)
+        gridPane.setVgap(10.0)
 
         borderPane.center = gridPane
         BorderPane.setAlignment(headerLabel, Pos.TOP_CENTER)

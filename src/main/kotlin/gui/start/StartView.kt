@@ -26,18 +26,18 @@ object StartView {
 
     init {
         headerLabel.styleClass.add("header-label");
+        footerLabel.styleClass.add("footer-label")
         difficulty1Button.styleClass.add("difficulty-button")
         difficulty2Button.styleClass.add("difficulty-button")
         difficulty3Button.styleClass.add("difficulty-button")
-        footerLabel.styleClass.add("footer-label")
+        vBox.styleClass.add("vbox")
+        borderPane.styleClass.add("border-pane")
+        imageView.styleClass.add("image-view")
         imageView.fitHeight = 250.0
         imageView.fitWidth = 250.0
-        imageView.styleClass.add("image-view")
 
-        vBox.styleClass.add("vbox")
         vBox.children.addAll(imageView, difficulty1Button, difficulty2Button, difficulty3Button)
 
-        borderPane.styleClass.add("border-pane")
         borderPane.top = headerLabel;
         borderPane.bottom = footerLabel
         borderPane.center = vBox
