@@ -2,14 +2,14 @@ package gui.result
 
 import domain.PlayerData
 import gui.start.ResultView
-import gui.start.StartVC
+import gui.start.StartController
 import javafx.application.Platform
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import javafx.scene.input.KeyCode
 import javafx.scene.input.KeyEvent
 
-object ResultVC {
+object ResultController {
 
     init {
         ResultView.onceAgainBtn.setOnAction(OnceAgainBtnEventHandler())
@@ -19,7 +19,7 @@ object ResultVC {
 
     class OnceAgainBtnEventHandler : EventHandler<ActionEvent> {
         override fun handle(event: ActionEvent) {
-            StartVC.show()
+            StartController.show()
         }
     }
 
@@ -32,8 +32,9 @@ object ResultVC {
     class KeyEventHandler : EventHandler<KeyEvent> {
         override fun handle(event: KeyEvent) {
             when (event.code) {
-                KeyCode.J -> StartVC.show()
-                KeyCode.N,
+                KeyCode.J, KeyCode.Y
+                -> StartController.show()
+                KeyCode.B, KeyCode.N,
                 KeyCode.ESCAPE -> Platform.exit()
                 else -> return
             }

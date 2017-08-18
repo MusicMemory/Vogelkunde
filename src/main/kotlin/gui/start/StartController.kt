@@ -1,19 +1,19 @@
 package gui.start
 
 import domain.PlayerData
-import gui.game.GameVC
+import gui.game.GameController
 import javafx.application.Platform
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import javafx.scene.input.KeyCode
 import javafx.scene.input.KeyEvent
 
-object StartVC {
+object StartController {
 
     init {
-        StartView.difficulty1Btn.setOnAction(DifficultyBtnEventHandler())
-        StartView.difficulty2Btn.setOnAction(DifficultyBtnEventHandler())
-        StartView.difficulty3Btn.setOnAction(DifficultyBtnEventHandler())
+        StartView.difficulty1Button.setOnAction(DifficultyBtnEventHandler())
+        StartView.difficulty2Button.setOnAction(DifficultyBtnEventHandler())
+        StartView.difficulty3Button.setOnAction(DifficultyBtnEventHandler())
         StartView.scene.addEventFilter(KeyEvent.KEY_PRESSED, DifficultyKeyEventHandler())
     }
 
@@ -21,12 +21,12 @@ object StartVC {
         override fun handle(event: ActionEvent) {
             PlayerData.assignDifficulty(
                     when (event.source) {
-                        StartView.difficulty1Btn -> 1
-                        StartView.difficulty2Btn -> 2
-                        StartView.difficulty3Btn -> 3
+                        StartView.difficulty1Button -> 1
+                        StartView.difficulty2Button -> 2
+                        StartView.difficulty3Button -> 3
                         else -> return
                     })
-            GameVC.show()
+            GameController.show()
         }
     }
 
@@ -43,7 +43,7 @@ object StartVC {
                         }
                         else -> return
                     })
-            GameVC.show()
+            GameController.show()
         }
     }
 

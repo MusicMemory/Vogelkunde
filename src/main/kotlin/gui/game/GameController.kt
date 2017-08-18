@@ -1,14 +1,14 @@
 package gui.game
 
 import domain.*
-import gui.result.ResultVC
+import gui.result.ResultController
 import gui.start.GameView
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import javafx.scene.input.KeyCode
 import javafx.scene.input.KeyEvent
 
-object GameVC {
+object GameController {
 
     val game = Game(BirdRepository.noBirds(), Config.noQuestions, Config.noAnswers, PlayerData.difficulty);
     var q = 0
@@ -56,7 +56,7 @@ object GameVC {
         GameView.showCorrectness(isCcorrect)
 
         if (++q >= Config.noQuestions) {
-            ResultVC.show()
+            ResultController.show()
         }
         else {
             setAnswerTexts(q)
