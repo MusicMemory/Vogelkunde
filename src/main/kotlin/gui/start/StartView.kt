@@ -16,6 +16,7 @@ object StartView {
     lateinit var stage: Stage
     val scene: Scene
     val headerLabel = Label("Ornithology")
+    val headerView = ImageView(Image("/images/title.png"))
     val footerLabel = Label("2017, entwickelt für die Schutzstation Wattenmeer Hogge")
     val difficulty1Button = Button("Geringe Schwierigkeit (1)")
     val difficulty2Button = Button("Mittlere Schwierigkeit (2)")
@@ -37,16 +38,15 @@ object StartView {
         difficulty2Button.styleClass.add("difficulty-button")
         difficulty3Button.styleClass.add("difficulty-button")
         imageView.styleClass.add("image-view")
-
         imageView.fitHeight = 230.0
         imageView.fitWidth = 250.0
 
         vBox.children.addAll(imageView, difficulty1Button, difficulty2Button, difficulty3Button)
 
-        borderPane.top = headerLabel;
         borderPane.bottom = footerLabel
         borderPane.center = vBox
-        BorderPane.setAlignment(headerLabel, Pos.TOP_CENTER)
+        borderPane.top = headerView; // headerLabel
+        BorderPane.setAlignment(headerView, Pos.BOTTOM_CENTER)
     }
 
     fun show() {

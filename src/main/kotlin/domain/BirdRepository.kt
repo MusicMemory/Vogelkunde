@@ -14,7 +14,7 @@ object BirdRepository {
         var reader: Reader? = null
         try {
             val stream = javaClass.getResourceAsStream("/birds.csv")
-            reader = InputStreamReader(stream)
+            reader = InputStreamReader(stream, "UTF-8")
             val records = CSVFormat.EXCEL.withDelimiter(';').withHeader().parse(reader)
             for (r in records) {
                 val bird = Bird(r["filename"], r["name"], r["order"], r["difficulty"].toInt())

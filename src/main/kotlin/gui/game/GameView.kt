@@ -10,7 +10,6 @@ import javafx.scene.control.Label
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.layout.BorderPane
-import javafx.scene.layout.FlowPane
 import javafx.scene.layout.GridPane
 import javafx.scene.paint.Color
 import javafx.stage.Stage
@@ -21,6 +20,7 @@ object GameView {
     lateinit var stage: Stage
     val scene: Scene
     val headerLabel = Label("Ornithology")
+    val headerView = ImageView(Image("/images/title.png"))
     val footerLabel = Label()
     val answerBtns = Array<Button>(Config.noAnswers) { i -> Button("Antwort ${i+1}") }
     val imageView = ImageView()
@@ -42,7 +42,7 @@ object GameView {
         imageView.fitWidth = 410.0
         imageView.isPreserveRatio = true
 
-        borderPane.top = headerLabel;
+        borderPane.top = headerView // headerLabel;
         borderPane.bottom = footerLabel
 
         gridPane.add(imageView, 0, 0, 2, 1)
@@ -53,7 +53,7 @@ object GameView {
         gridPane.setVgap(10.0)
 
         borderPane.center = gridPane
-        BorderPane.setAlignment(headerLabel, Pos.TOP_CENTER)
+        BorderPane.setAlignment(headerView, Pos.TOP_CENTER)
         BorderPane.setAlignment(footerLabel, Pos.TOP_CENTER)
     }
 

@@ -5,6 +5,8 @@ import javafx.geometry.Pos
 import javafx.scene.Scene
 import javafx.scene.control.Button
 import javafx.scene.control.Label
+import javafx.scene.image.Image
+import javafx.scene.image.ImageView
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.VBox
 import javafx.stage.Stage
@@ -14,6 +16,7 @@ object ResultView {
     lateinit var stage: Stage
     val scene: Scene
     val headerLabel = Label("Ornithology")
+    val headerView = ImageView(Image("/images/title.png"))
     val footerLabel = Label("2017, entwickelt für die Schutzstation Wattenmeer Hogge")
     val pointsLabel = Label()
     val onceAgainBtn = Button("Noch einmal spielen (j)")
@@ -39,10 +42,10 @@ object ResultView {
         vBox.children.add(onceAgainBtn)
         vBox.children.add(terminateBtn)
 
-        borderPane.top = headerLabel;
         borderPane.bottom = footerLabel
         borderPane.center = vBox
-        BorderPane.setAlignment(headerLabel, Pos.TOP_CENTER)
+        borderPane.top = headerView // headerLabel;
+        BorderPane.setAlignment(headerView, Pos.TOP_CENTER)
     }
 
     fun show() {
