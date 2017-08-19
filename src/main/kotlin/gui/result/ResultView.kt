@@ -17,7 +17,7 @@ object ResultView {
     val scene: Scene
     val headerLabel = Label("Ornithology")
     val headerView = ImageView(Image("/images/title.png"))
-    val footerLabel = Label("2017, entwickelt für die Schutzstation Wattenmeer Hogge")
+    val footerLabel = Label("2017, entwickelt für die Schutzstation Wattenmeer Hooge")
     val pointsLabel = Label()
     val onceAgainBtn = Button("Noch einmal spielen (j)")
     val terminateBtn = Button("Beenden (b)")
