@@ -10,8 +10,8 @@ import javafx.scene.input.KeyEvent
 
 object GameController {
 
-    val game = Game(BirdRepository.noBirds(), Config.noQuestions, Config.noAnswers, PlayerData.difficulty);
-    var q = 0
+    private var game: Game = Game(BirdRepository.noBirds(), Config.noQuestions, Config.noAnswers, PlayerData.difficulty);
+    private var q = 0
 
     init {
         GameView.answerBtns.forEach { it.setOnAction(AnswerButtonEventHandler()) }
@@ -88,6 +88,7 @@ object GameController {
 
     fun show() {
         q = 0;
+        game = Game(BirdRepository.noBirds(), Config.noQuestions, Config.noAnswers, PlayerData.difficulty);
         GameView.show()
     }
 
