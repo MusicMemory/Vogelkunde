@@ -17,7 +17,7 @@ object StartView {
     val scene: Scene
     val headerLabel = Label("Ornithology")
     val headerView = ImageView(Image("/images/title.png"))
-    val footerLabel = Label("2017, entwickelt für die Schutzstation Wattenmeer Hogge")
+    val footerLabel = Label("2017, entwickelt für die Schutzstation Wattenmeer Hooge")
     val difficulty1Button = Button("Geringe Schwierigkeit (1)")
     val difficulty2Button = Button("Mittlere Schwierigkeit (2)")
     val difficulty3Button = Button("Hohe Schwierigkeit (3)")
