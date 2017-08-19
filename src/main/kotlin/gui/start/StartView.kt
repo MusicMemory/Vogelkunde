@@ -21,7 +21,7 @@ object StartView {
     val difficulty1Button = Button("Geringe Schwierigkeit (1)")
     val difficulty2Button = Button("Mittlere Schwierigkeit (2)")
     val difficulty3Button = Button("Hohe Schwierigkeit (3)")
-    val imageView = ImageView(Image("/images/niclas.jpg"))
+    val imageView = ImageView(Image("/images/logo.png"))
     val vBox = VBox()
     val borderPane = BorderPane()
 
