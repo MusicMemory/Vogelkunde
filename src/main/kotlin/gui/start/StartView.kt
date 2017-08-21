@@ -37,14 +37,15 @@ object StartView {
         difficulty2Button.styleClass.add("difficulty-button")
         difficulty3Button.styleClass.add("difficulty-button")
         imageView.styleClass.add("image-view")
-        imageView.fitHeight = 230.0
+        // Nur fuer das Startlogo:
+        imageView.fitHeight = 250.0
         imageView.fitWidth = 250.0
 
         vBox.children.addAll(imageView, difficulty1Button, difficulty2Button, difficulty3Button)
 
         borderPane.bottom = footerLabel
         borderPane.center = vBox
-        borderPane.top = headerView
+        borderPane.top = headerView; // headerLabel
         BorderPane.setAlignment(headerView, Pos.BOTTOM_CENTER)
     }
 
