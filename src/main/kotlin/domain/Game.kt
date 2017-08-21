@@ -20,7 +20,7 @@ class Game(noBirds: Int, noQuestions: Int, noAnswers: Int, difficulty: Int) {
             }
             // Wenn weniger Vögel vorhanden sind als gebraucht, würde das hier zu einer Exception führen:
             if (counter >= MAX_ITERATIONS) {
-                throw Exception("Probably there are not enough birds present with difficulty " + difficulty)
+                throw Exception("Probably, there are not enough birds present with difficulty $difficulty.")
             }
 
             // Liste answers mit Zahlen (ID) füllen ohne Wiederholung ohne gleichen Namen
@@ -41,14 +41,14 @@ class Game(noBirds: Int, noQuestions: Int, noAnswers: Int, difficulty: Int) {
                 if (!isCandidateDuplicate) answerList.add(birdIdCandidate)
             }
             if (counter >= MAX_ITERATIONS) {
-                throw Exception("Probably there are not enough birds present: " + noBirds)
+                throw Exception("Probably, there are not enough ($noBirds) birds present.")
             }
             // richtige Antwort zufällig unter den bisherigen Antworten platzieren (überschreiben)
             val posRightAnswer = randInt(noAnswers)
             answerList[posRightAnswer] = questions[q]
             answers[q] = answerList.toIntArray()
         }
-        // Debug-Ausgabe der gewählen zu erratenden Bilder und der möglichen Antworten
+        // Debug-Ausgabe der gewählten zu erratenden Bilder und der möglichen Antworten
         var imageCnt = 0
         for (answerSet in answers) {
             println("${imageCnt + 1}. Image ${questions[imageCnt++]} -> Answers ${answerSet.toList()}")
