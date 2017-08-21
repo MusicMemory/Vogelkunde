@@ -37,7 +37,8 @@ object GameView {
         footerLabel.styleClass.add("footer-label")
         imageView.styleClass.add("image-view")
 
-        imageView.fitWidth = 410.0
+        imageView.fitWidth =  Config.windowSize.first * 0.8 + 10
+        answerBtns.forEach { it.prefWidth = Config.windowSize.first * 0.4 }
         imageView.isPreserveRatio = true
 
         borderPane.top = headerView // headerLabel;
