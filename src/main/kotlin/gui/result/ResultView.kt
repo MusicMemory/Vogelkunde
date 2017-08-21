@@ -1,5 +1,6 @@
 package gui.start
 
+import Main
 import domain.Config
 import javafx.geometry.Pos
 import javafx.scene.Scene
@@ -9,9 +10,9 @@ import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.VBox
-import javafx.stage.Stage
 
 object ResultView {
+
     val scene: Scene
     val headerLabel = Label("Ornithology")
     val headerView = ImageView(Image("/images/title.png"))

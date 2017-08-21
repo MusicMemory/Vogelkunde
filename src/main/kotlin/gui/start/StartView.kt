@@ -1,5 +1,6 @@
 package gui.start
 
+import Main
 import domain.Config
 import javafx.geometry.Pos
 import javafx.scene.Scene
@@ -9,11 +10,9 @@ import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.VBox
-import javafx.stage.Stage
 
 object StartView {
 
-    lateinit var stage: Stage
     val scene: Scene
     val headerLabel = Label("Ornithology")
     val headerView = ImageView(Image("/images/title.png"))
@@ -45,7 +44,7 @@ object StartView {
 
         borderPane.bottom = footerLabel
         borderPane.center = vBox
-        borderPane.top = headerView; // headerLabel
+        borderPane.top = headerView
         BorderPane.setAlignment(headerView, Pos.BOTTOM_CENTER)
     }
 
