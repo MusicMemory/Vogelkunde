@@ -23,6 +23,5 @@
 .answer-button {
     -fx-font: 14px "Sans Serif";
     -fx-padding: 7px;
-    -fx-pref-width: 200px;
     -fx-background-color: #ccff99;
 }
