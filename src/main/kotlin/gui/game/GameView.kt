@@ -17,7 +17,6 @@ import javafx.stage.Stage
 
 object GameView {
 
-    lateinit var stage: Stage
     val scene: Scene
     val headerLabel = Label("Ornithology")
     val headerView = ImageView(Image("/images/title.png"))
@@ -58,9 +57,9 @@ object GameView {
     }
 
     fun show() {
-        stage.title = "Ornithology - Beantworte die 1. Frage..."
-        stage.scene = scene
-        stage.show()
+        Main.stage.title = "Ornithology - Beantworte die 1. Frage..."
+        Main.stage.scene = scene
+        Main.stage.show()
     }
 
     fun showCorrectness(correct: Boolean) {
