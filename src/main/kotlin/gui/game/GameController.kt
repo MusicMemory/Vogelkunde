@@ -59,7 +59,7 @@ object GameController {
             ResultController.show()
         }
         else {
-            GameView.stage.title = "Ornithology - Beantworte die ${q+1}. Frage..."
+            Main.stage.title = "Ornithology - Beantworte die ${q+1}. Frage..."
             setAnswerTexts(q)
             setImage(q)
         }

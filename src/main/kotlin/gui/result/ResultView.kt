@@ -12,8 +12,6 @@ import javafx.scene.layout.VBox
 import javafx.stage.Stage
 
 object ResultView {
-
-    lateinit var stage: Stage
     val scene: Scene
     val headerLabel = Label("Ornithology")
     val headerView = ImageView(Image("/images/title.png"))
@@ -49,9 +47,9 @@ object ResultView {
     }
 
     fun show() {
-        stage.title = "Ornithology - Ergebnis"
-        stage.scene = scene
-        stage.show()
+        Main.stage.title = "Ornithology - Ergebnis"
+        Main.stage.scene = scene
+        Main.stage.show()
     }
 
 }

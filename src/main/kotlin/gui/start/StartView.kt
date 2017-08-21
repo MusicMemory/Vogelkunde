@@ -50,9 +50,9 @@ object StartView {
     }
 
     fun show() {
-        stage.title = "Ornithology - das Quiz"
-        stage.scene = scene
-        stage.show()
+        Main.stage.title = "Ornithology - das Quiz"
+        Main.stage.scene = scene
+        Main.stage.show()
     }
 
 }
