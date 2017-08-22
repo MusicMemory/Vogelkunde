@@ -1,5 +1,5 @@
 group 'de.niederdrenk'
-version '1.0-SNAPSHOT'
+version '2.0-SNAPSHOT'
 
 buildscript {
     ext.kotlin_version = '1.1.3-2'
@@ -13,6 +13,7 @@ buildscript {
 }
 
 apply plugin: 'kotlin'
+apply plugin: 'java'
 
 repositories {
     mavenCentral()
@@ -30,27 +31,7 @@ compileKotlin {
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
-group 'de.niederdrenk'
-version '1.0-SNAPSHOT'
 
-buildscript {
-    ext.kotlin_version = '1.1.3-2'
-
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
-}
-
-apply plugin: 'java'
-apply plugin: 'kotlin'
-
-
-version = '1.0'
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
 
 //create a single Jar with all dependencies
 task fatJar(type: Jar) {
@@ -64,18 +45,3 @@ task fatJar(type: Jar) {
     with jar
 }
 
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-}
-
-compileKotlin {
-    kotlinOptions.jvmTarget = "1.8"
-}
-compileTestKotlin {
-    kotlinOptions.jvmTarget = "1.8"
-}
