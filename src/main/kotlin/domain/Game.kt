@@ -30,13 +30,16 @@ class Game(noBirds: Int, noQuestions: Int, noAnswers: Int, difficulty: Int) {
                 val birdIdCandidate = randInt(noBirds)
                 // Der zu ratende Vogel soll erst mal nicht in den möglichen Antwortkandidaten vorkommen:
                 // Später wird dann einer durch die richtige Antwort ersetzt
-                val birdNameCandidate = BirdRepository.birdWithId(birdIdCandidate).name
+                val birdCandidate = BirdRepository.birdWithId(birdIdCandidate)
+                val birdQuestion = BirdRepository.birdWithId(questions[q])
+
                 val birdNameQuestion = BirdRepository.birdWithId(questions[q]).name
-                if (birdNameCandidate.equals(birdNameQuestion)) continue
+                if (birdCandidate.name.equals(birdNameQuestion)) continue
+                if (!birdCandidate.order.equals(birdQuestion.order) && counter < MAX_ITERATIONS/2) continue
 
                 val isCandidateDuplicate = answerList.any { a ->
                     val birdNameAnswer = BirdRepository.birdWithId(a).name
-                    birdNameCandidate.equals(birdNameAnswer)
+                    birdCandidate.name.equals(birdNameAnswer)
                 }
                 if (!isCandidateDuplicate) answerList.add(birdIdCandidate)
             }
