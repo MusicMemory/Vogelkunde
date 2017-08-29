@@ -2,7 +2,7 @@ package domain
 
 class Game(noBirds: Int, noQuestions: Int, noAnswers: Int, difficulty: Int) {
 
-    val MAX_ITERATIONS = 100;
+    val MAX_ITERATIONS = 222;
     val questions = IntArray(noQuestions)
     val answers = Array<IntArray>(noQuestions, {IntArray(0)})
 
