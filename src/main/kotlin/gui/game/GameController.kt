@@ -10,14 +10,12 @@ import javafx.scene.input.KeyEvent
 
 object GameController {
 
-    private var game: Game = Game(BirdRepository.noBirds(), Config.noQuestions, Config.noAnswers, PlayerData.difficulty);
+    private var game: Game? = null
     private var q = 0
 
     init {
         GameView.answerBtns.forEach { it.setOnAction(AnswerButtonEventHandler()) }
         GameView.scene.addEventFilter(KeyEvent.KEY_PRESSED, AnswerKeyEventHandler())
-        setAnswerTexts(q)
-        setImage(q)
     }
 
     class AnswerButtonEventHandler : EventHandler<ActionEvent> {
@@ -51,7 +49,7 @@ object GameController {
         require(q < Config.noQuestions) { "q=$q must be less than ${Config.noQuestions}" }
         if (a >= Config.noAnswers) return
 
-        val isCcorrect = game.isCorrect(q, a);
+        val isCcorrect = game!!.isCorrect(q, a);
         if (isCcorrect) PlayerData.addPoints()
         GameView.showCorrectness(isCcorrect)
 
@@ -69,7 +67,7 @@ object GameController {
      * Setzt das Bild zur q-ten Frage in die Image-View
      */
     private fun setImage(q: Int) {
-        val birdId = game.questions[q]
+        val birdId = game!!.questions[q]
         val bird = BirdRepository.birdWithId(birdId)
         val image = ImageRepository.imageWithFileName(bird.filename)
         GameView.setImage(image)
@@ -80,7 +78,7 @@ object GameController {
      */
     private fun setAnswerTexts(q: Int) {
         for (a in 0..GameView.answerBtns.size - 1) {
-            val birdId = game.answers[q][a]
+            val birdId = game!!.answers[q][a]
             val bird = BirdRepository.birdWithId(birdId)
             GameView.answerBtns[a].text = bird.name// + " (${a+1})"
         }
@@ -89,6 +87,8 @@ object GameController {
     fun show() {
         q = 0;
         game = Game(BirdRepository.noBirds(), Config.noQuestions, Config.noAnswers, PlayerData.difficulty);
+        setAnswerTexts(0)
+        setImage(0)
         GameView.show()
     }
 
