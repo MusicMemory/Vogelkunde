@@ -35,14 +35,19 @@ class Game(noBirds: Int, noQuestions: Int, noAnswers: Int, difficulty: Int) {
 
                 val birdNameQuestion = BirdRepository.birdWithId(questions[q]).name
                 if (birdCandidate.name.equals(birdNameQuestion)) continue
+                if (birdCandidate.difficulty != birdQuestion.difficulty) continue
                 if (!birdCandidate.order.equals(birdQuestion.order) && counter < MAX_ITERATIONS/2) continue
 
                 val isCandidateDuplicate = answerList.any { a ->
                     val birdNameAnswer = BirdRepository.birdWithId(a).name
                     birdCandidate.name.equals(birdNameAnswer)
                 }
-                if (!isCandidateDuplicate) answerList.add(birdIdCandidate)
+                if (!isCandidateDuplicate) {
+                    answerList.add(birdIdCandidate)
+                    // println("Difficulty ${birdCandidate.difficulty}, Order ${birdCandidate.order}, Name ${birdCandidate.filename}")
+                }
             }
+            // println("==================================================")
             if (counter >= MAX_ITERATIONS) {
                 throw Exception("Probably, there are not enough ($noBirds) birds present.")
             }
