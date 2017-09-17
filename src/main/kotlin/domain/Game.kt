@@ -43,7 +43,7 @@ class Game(noBirds: Int, noQuestions: Int, noAnswers: Int, difficulty: Int) {
                     birdCandidate.name.equals(birdNameAnswer)
                 }
                 if (!isCandidateDuplicate) {
-                    answerList.add(birdIdCandidate)
+                    answerList += birdIdCandidate
                     // println("Difficulty ${birdCandidate.difficulty}, Order ${birdCandidate.order}, Name ${birdCandidate.filename}")
                 }
             }

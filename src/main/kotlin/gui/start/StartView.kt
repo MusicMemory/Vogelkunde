@@ -26,17 +26,17 @@ object StartView {
 
     init {
         scene = Scene(borderPane, Config.windowSize.first, Config.windowSize.second)
-        scene.getStylesheets().add("/common.css")
-        scene.getStylesheets().add("/start.css")
+        scene.getStylesheets() += "/common.css"
+        scene.getStylesheets() += "/start.css"
 
-        borderPane.styleClass.add("border-pane")
-        vBox.styleClass.add("vbox")
-        headerLabel.styleClass.add("header-label")
-        footerLabel.styleClass.add("footer-label")
-        difficulty1Button.styleClass.add("difficulty-button")
-        difficulty2Button.styleClass.add("difficulty-button")
-        difficulty3Button.styleClass.add("difficulty-button")
-        imageView.styleClass.add("image-view")
+        borderPane.styleClass += "border-pane"
+        vBox.styleClass += "vbox"
+        headerLabel.styleClass += "header-label"
+        footerLabel.styleClass += "footer-label"
+        difficulty1Button.styleClass += "difficulty-button"
+        difficulty2Button.styleClass += "difficulty-button"
+        difficulty3Button.styleClass += "difficulty-button"
+        imageView.styleClass += "image-view"
         // Nur fuer das Startlogo:
         imageView.fitHeight = 250.0
         imageView.fitWidth = 250.0

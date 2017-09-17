@@ -25,21 +25,21 @@ object ResultView {
 
     init {
         scene = Scene(borderPane, Config.windowSize.first, Config.windowSize.second)
-        scene.getStylesheets().add("/common.css")
-        scene.getStylesheets().add("/result.css")
+        scene.getStylesheets() += "/common.css"
+        scene.getStylesheets() += "/result.css"
 
-        borderPane.styleClass.add("border-pane")
-        vBox.styleClass.add("vbox")
-        headerLabel.styleClass.add("header-label")
-        footerLabel.styleClass.add("footer-label")
-        pointsLabel.styleClass.add("points-label")
+        borderPane.styleClass += "border-pane"
+        vBox.styleClass += "vbox"
+        headerLabel.styleClass += "header-label"
+        footerLabel.styleClass += "footer-label"
+        pointsLabel.styleClass += "points-label"
 
-        onceAgainBtn.styleClass.add("term-button")
-        terminateBtn.styleClass.add("term-button")
+        onceAgainBtn.styleClass += "term-button"
+        terminateBtn.styleClass += "term-button"
 
-        vBox.children.add(pointsLabel)
-        vBox.children.add(onceAgainBtn)
-        vBox.children.add(terminateBtn)
+        vBox.children += pointsLabel
+        vBox.children += onceAgainBtn
+        vBox.children += terminateBtn
 
         borderPane.bottom = footerLabel
         borderPane.center = vBox

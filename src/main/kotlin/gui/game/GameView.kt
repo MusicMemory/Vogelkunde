@@ -27,15 +27,15 @@ object GameView {
 
     init {
         scene = Scene(borderPane, Config.windowSize.first, Config.windowSize.second)
-        scene.getStylesheets().add("/common.css")
-        scene.getStylesheets().add("/game.css")
+        scene.getStylesheets() += "/common.css"
+        scene.getStylesheets() += "/game.css"
 
-        borderPane.styleClass.add("border-pane")
-        gridPane.styleClass.add("grid-pane")
-        answerBtns.forEach { it.styleClass.add("answer-button") }
-        headerLabel.styleClass.add("header-label");
-        footerLabel.styleClass.add("footer-label")
-        imageView.styleClass.add("image-view")
+        borderPane.styleClass += "border-pane"
+        gridPane.styleClass += "grid-pane"
+        answerBtns.forEach { it.styleClass += "answer-button" }
+        headerLabel.styleClass += "header-label"
+        footerLabel.styleClass += "footer-label"
+        imageView.styleClass += "image-view"
 
         imageView.fitWidth =  Config.windowSize.first * 0.8 + 10
         answerBtns.forEach { it.prefWidth = Config.windowSize.first * 0.4 }

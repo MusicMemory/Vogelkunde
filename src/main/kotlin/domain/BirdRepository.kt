@@ -18,7 +18,7 @@ object BirdRepository {
             val records = CSVFormat.EXCEL.withDelimiter(';').withHeader().parse(reader)
             for (r in records) {
                 val bird = Bird(r["filename"], r["name"], r["order"], r["difficulty"].toInt())
-                birds.add(bird)
+                birds += bird
                 println(bird)
             }
         } catch (e: Exception) {
