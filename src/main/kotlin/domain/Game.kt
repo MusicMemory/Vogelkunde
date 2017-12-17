@@ -34,13 +34,13 @@ class Game(noBirds: Int, noQuestions: Int, noAnswers: Int, difficulty: Int) {
                 val birdQuestion = BirdRepository.birdWithId(questions[q])
 
                 val birdNameQuestion = BirdRepository.birdWithId(questions[q]).name
-                if (birdCandidate.name.equals(birdNameQuestion)) continue
+                if (birdCandidate.name == birdNameQuestion) continue
                 if (birdCandidate.difficulty != birdQuestion.difficulty) continue
-                if (!birdCandidate.order.equals(birdQuestion.order) && counter < MAX_ITERATIONS/2) continue
+                if (birdCandidate.order !== birdQuestion.order && counter < MAX_ITERATIONS/2) continue
 
                 val isCandidateDuplicate = answerList.any { a ->
                     val birdNameAnswer = BirdRepository.birdWithId(a).name
-                    birdCandidate.name.equals(birdNameAnswer)
+                    birdCandidate.name == birdNameAnswer
                 }
                 if (!isCandidateDuplicate) {
                     answerList += birdIdCandidate
